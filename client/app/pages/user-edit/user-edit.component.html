@@ -1,0 +1,56 @@
+<!-- TITLE -->
+<mat-card class="mb-40">
+    <h1>User Edit</h1>
+</mat-card>
+
+<mat-card>
+    <div class="card-title">
+        <mat-icon>edit</mat-icon>
+        Edit
+    </div>
+
+    <form #skaffolderForm="ngForm" class="container-fluid">
+        
+        
+        <mat-form-field class="full-width">
+            <input matInput type="text" placeholder="Mail" [(ngModel)]="item.mail"  name="mail" id="mail" >
+        </mat-form-field>
+        
+        
+        <mat-form-field class="full-width">
+            <input matInput type="text" placeholder="Name" [(ngModel)]="item.name"  name="name" id="name" >
+        </mat-form-field>
+        
+        
+        <mat-form-field class="full-width">
+            <input matInput type="text" placeholder="Password" [(ngModel)]="item.password"  name="password" id="password" required>
+        </mat-form-field>
+        
+        
+        <mat-form-field class="full-width">
+            <input matInput type="text" placeholder="Roles" [(ngModel)]="item.roles"  name="roles" id="roles" >
+        </mat-form-field>
+        
+        
+        <mat-form-field class="full-width">
+            <input matInput type="text" placeholder="Surname" [(ngModel)]="item.surname"  name="surname" id="surname" >
+        </mat-form-field>
+        
+        
+        <mat-form-field class="full-width">
+            <input matInput type="text" placeholder="Username" [(ngModel)]="item.username"  name="username" id="username" required>
+        </mat-form-field>
+        
+        
+        
+        
+
+
+        <!-- BUTTON BAR -->
+        <div class="mt-40">
+            <button mat-raised-button color="primary" class="pull-right mr-5" (click)="save(skaffolderForm.valid, item)">Save</button>
+            <button mat-raised-button class="pull-right " (click)="goBack()">Back To List</button>
+        </div>
+    </form>
+
+</mat-card>

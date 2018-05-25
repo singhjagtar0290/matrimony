@@ -1,0 +1,103 @@
+<!-- TITLE -->
+<mat-card class="mb-40">
+    <h1>User List</h1>
+</mat-card>
+
+<!-- SEARCH FORM -->
+<mat-card>
+    
+    <div class="card-title">
+        <mat-icon>search</mat-icon>
+        Search
+    </div>
+        
+    <form name="form-search" class="container-fluid">
+
+        <div class="row">
+			
+                <div class="col-sm-6">
+                    <mat-form-field class="full-width">
+                        <input matInput type="text" placeholder="Mail" [(ngModel)]="search.mail" name="mail" id="mail">
+                    </mat-form-field>
+                </div>
+			
+                <div class="col-sm-6">
+                    <mat-form-field class="full-width">
+                        <input matInput type="text" placeholder="Name" [(ngModel)]="search.name" name="name" id="name">
+                    </mat-form-field>
+                </div>
+			
+                <div class="col-sm-6">
+                    <mat-form-field class="full-width">
+                        <input matInput type="text" placeholder="Password" [(ngModel)]="search.password" name="password" id="password">
+                    </mat-form-field>
+                </div>
+			
+                <div class="col-sm-6">
+                    <mat-form-field class="full-width">
+                        <input matInput type="text" placeholder="Roles" [(ngModel)]="search.roles" name="roles" id="roles">
+                    </mat-form-field>
+                </div>
+			
+                <div class="col-sm-6">
+                    <mat-form-field class="full-width">
+                        <input matInput type="text" placeholder="Surname" [(ngModel)]="search.surname" name="surname" id="surname">
+                    </mat-form-field>
+                </div>
+			
+                <div class="col-sm-6">
+                    <mat-form-field class="full-width">
+                        <input matInput type="text" placeholder="Username" [(ngModel)]="search.username" name="username" id="username">
+                    </mat-form-field>
+                </div>
+        </div>
+
+    </form>
+</mat-card>
+
+<!-- TABLE -->
+<table class="table table-hover mt-40">
+    <thead>
+        <tr>
+            <th>_id</th>
+            <th>mail</th>
+            <th>name</th>
+            <th>password</th>
+            <th>roles</th>
+            <th>surname</th>
+            <th>username</th>
+            <th>Remove</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of list | search: { 'mail': search.mail, 'name': search.name, 'password': search.password, 'roles': search.roles, 'surname': search.surname, 'username': search.username }">
+            <td><a [routerLink]="['/users', item._id]">{{item._id}}</a></td>
+            
+            <!-- ATTRIBUTES -->
+            
+            <td>{{item.mail }}</td>
+            <td>{{item.name }}</td>
+            <td>{{item.password }}</td>
+            <td>{{item.roles }}</td>
+            <td>{{item.surname }}</td>
+            <td>{{item.username }}</td>
+            
+            <!-- DELETE BUTTON -->
+            <td>
+                <button mat-icon-button (click)="openModal(item._id)" class="mt--10">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+    <div class="no-result" *ngIf="(list | search: {  'mail': search.mail ,  'name': search.name ,  'password': search.password ,  'roles': search.roles ,  'surname': search.surname ,  'username': search.username  }).length == 0">
+        No items found
+    </div>
+</table>
+
+<!-- BUTTON -->
+<button class="btn btn-primary pull-right mb-20" routerLink="/users/new" mat-fab color="primary">
+    <mat-icon>add</mat-icon>
+</button>
+
+<div class="clearfix"></div>
